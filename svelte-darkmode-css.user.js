@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         svelte-darkmode-css
-// @namespace    https://github.com/subz390
+// @namespace    https://github.com/subz390/svelte-darkmode-css
 // @version      0.200705-200404.1-200706-070923
 // @description  Development project for Svelte darkmode css
 // @author       SubZ390
