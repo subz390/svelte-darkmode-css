@@ -1,0 +1,186 @@
+/* 
+  Svelte Docs and Tutorial darkmode by SubZ390
+  v0.200705.1
+
+  https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Perceivable/Color_contrast
+  The aim of this stylesheet is minimum amount of glare, and an enhanced yet comfortable color contrast ratio
+  The target audience is for people who are sensitive to bright light and can benefit from higher contrasting colours
+
+  All the !important are because this style overwrites existing styles
+
+  People who need high contrast can also benefit from temporal sharpness by removing unnecessary UI transitions.
+  Slow transitions can make the UI difficult to comprehend.  Feel confusing, irritating or frustrating with repeated use.
+  So where I've added transition overrides it's for this reason.
+*/
+.theme-default {
+  --back: #1b1b1b;
+  --back-light: #25292c;
+  --back-api: #252628; /* code and pre */
+  --prime: #ff3e00; /* Svelte orange */
+  --second: #111111;
+  --flash: #6ab2ff; /* blockquote borders and a:hover */
+  --heading: #dfdfdf;
+  --text: #c5c5c5;
+  --sidebar-text: #d0d0d0;
+}
+
+::selection {
+  background: #e34b1d !important;
+  color: var(--back) !important;
+  text-shadow: none;
+}
+
+header {
+  background-color: #3e3e3e !important;
+  box-shadow: -0.4rem 0.9rem 0.7rem #000 !important;
+  transition: unset !important;
+}
+.home {
+  background-color: #0000 !important;
+}
+ul.open {
+  background-color: transparent !important;
+}
+li::before {
+  background-color: var(--text) !important;
+}
+
+
+blockquote {
+  color: #5bbdff;
+  border: 2px solid #144b86 !important;
+}
+
+/* Scoping with id here to override index.css !important on blockquote code */
+#sapper blockquote code,
+code {
+  color: #dddbdb !important;
+  background: var(--back-api) !important;
+}
+h3 > code,
+h4 > code {
+  /* fix issue where background was being set the same as other code backgrounds, this is heading, not an inline code element */
+  background: unset !important;
+}
+
+aside::after {
+    background: none !important;
+}
+
+
+a:hover,
+.section:hover,
+.subsection:hover,
+.active {
+  color: var(--prime) !important;
+}
+
+
+a {
+  transition: none !important;
+}
+a.anchor {
+  /* an inline light variant of /icons/link.svg base64 encoded https://www.base64encode.org/ */
+  /* <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="#dfdfdf"><path d="m9 7h-3a2 2 0 0 0 0 10h3"/><path d="m15 7h3a2 2 0 0 1 0 10h-3"/><path d="m7 12h10"/></g></svg> */
+  background: url('data:image/svg+xml;charset=utf-8;base64,PHN2ZyBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBzdHJva2U9IiNkZmRmZGYiPjxwYXRoIGQ9Im05IDdoLTNhMiAyIDAgMCAwIDAgMTBoMyIvPjxwYXRoIGQ9Im0xNSA3aDNhMiAyIDAgMCAxIDAgMTBoLTMiLz48cGF0aCBkPSJtNyAxMmgxMCIvPjwvZz48L3N2Zz4=') 0 50% no-repeat !important; 
+}
+h4 > .anchor {
+  /* fix issue on h4 anchor elements ie on:eventname the vertical alignment is wrong */
+  position: absolute !important;
+  top: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--heading) !important;
+}
+
+/* Modified from Prism Okaidia ===================================== */
+
+/* Text inside code blocks */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #f2f4f8;
+  background: none;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+/* Code blocks */
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background: var(--back-api) !important;
+  box-shadow: 1px 1px 0 #4b4b4b !important;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #53ce48;
+}
+
+.token.punctuation {
+  color: #fff;
+}
+
+.namespace {
+  opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #ff4c12;
+}
+
+.token.boolean,
+.token.number {
+  color: #ffd739;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #ffa600;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+  color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+  color: #ff5ea2;
+}
+
+.token.keyword {
+  color: #76cef9;
+}
+
+.token.regex,
+.token.important {
+  color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
